@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上传文件</title>
+    <style>
+        body {
+            padding: 10px;
+        }
+        h1 {
+            color: orange;
+        }
+        form {
+            border-radius: 10px;
+            border: 5px solid red;
+            width: 400px;
+            height: 145px;
+            background-color:lightskyblue;
+        }
+        form h3 {
+            padding-left: 10px;
+        }
+        form input {
+            color: coral;
+        }
+        form button {
+            position: relative;
+            width: 100px;
+            height: 40px;
+            color: deepskyblue;
+            font-size: 25px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>上传文件</h1>
+    <!-- enctype="multipart/form-data" 设置表单的文件以二进制方式上传 就可以上传多种不同的文件 -->
+    <form name="upload_form" action="#" method="post" enctype="multipart/form-data">
+        <h4>请选择上传的文件：<input type="file" name="upload_file" /></h4>
+        <button type="submit">提交</button>
+    </form>
+</body>
+</html>
