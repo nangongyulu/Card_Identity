@@ -3,16 +3,15 @@ import os
 import config
 import time
 
-# 设置文件类型
+# 创建项目
 app = Flask(__name__)
 app.config.from_object(config)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 # 全局变量 共享的文件夹路径 可以根据需求更改
-DIRECTORY_FOLDER = 'static/'
+DIRECTORY_FOLDER = 'image'
 # 上传的文件夹路径
-DIRECTORY_PATH = os.path.join(app.root_path, 'static')
-
+DIRECTORY_PATH = os.path.join(app.root_path, 'image')
 
 def allowed_file(filename):
     return '.' in filename and filename.rspliit('.', 1)[1] in ALLOWED_EXTENSIONS
@@ -39,23 +38,30 @@ def get_files_data():
         })
     return files
 
-
 @app.route("/")
-def index():  # 主页
+def HomePage():
+    return render_template("HomePage.html")
+
+@app.route("/index")
+def index():
+    """共享文件主页"""
     return render_template("index.html", files=get_files_data())
 
 
 @app.route("/upload_file", methods=['GET', 'POST'])
 def upload():
+    """上传文件的URL 支持GET/POST请求"""
     if request.method == "POST":
         # 获取文件 拼接存储路径并保存
         upload_file = request.files.get("upload_file")
         upload_file.save(os.path.join(DIRECTORY_PATH, upload_file.filename))
+
         #  返回上传成功的模板
         return render_template("upload_ok.html", filename=upload_file.filename)
-    # 上传的网页
-    return render_template("upload.html")
 
+    # 上传的网页
+
+    return render_template("upload.html")
 
 if __name__ == '__main__':
     app.run()
