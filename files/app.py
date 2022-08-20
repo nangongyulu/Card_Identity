@@ -8,10 +8,9 @@ app = Flask(__name__)
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 # 全局变量 共享的文件夹路径 可以根据需求更改
-DIRECTORY_FOLDER = 'static'
+DIRECTORY_FOLDER = 'image'
 # 上传的文件夹路径
-DIRECTORY_PATH = os.path.join(app.root_path, 'static')
-
+DIRECTORY_PATH = os.path.join(app.root_path, 'image')
 
 # 获取文件信息的函数
 def get_files_data():
@@ -34,8 +33,11 @@ def get_files_data():
         })
     return files
 
-
 @app.route("/")
+def HomePage():
+    return render_template("HomePage.html")
+
+@app.route("/index")
 def index():
     """共享文件主页"""
     return render_template("index.html", files=get_files_data())
@@ -66,7 +68,6 @@ def upload():
     # 上传的网页
 
     return render_template("upload.html")
-
 
 if __name__ == '__main__':
     app.run()
