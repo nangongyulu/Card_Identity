@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FLASK局域网文件共享</title>
-    <!-- 标签的CSS样式设置 看不懂没关系 只要知道它布置了HTML页面的样式就行-->
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Flask</title>
     <style>
         body {
             padding: 20px 50px 10px 10px;
         }
+
         .files-table {
             border-radius: 10px;
             width: 1000px;
             border: 3px solid blue;
             background-color: lightyellow;
         }
+
         .files-table td {
             width: 150px;
             height: 20px;
             text-align: center;
             font-size: 25px;
         }
+
         .td-name {
             color: coral;
         }
+
         .td-name a, a:link, a:visited {
             color: coral;
         }
+
         .td-size {
             color: dodgerblue;
         }
+
         .td-ctime {
             color: goldenrod;
         }
+
         h4 a {
             text-decoration: none;
             border: 3px solid cyan;
@@ -42,22 +48,15 @@
     </style>
 </head>
 <body>
-    <h1>FLASK局域网文件共享</h1>
-    <table class="files-table" border="1">
-        <tr><!-- 表头 -->
-            <td class="td-name">文件名</td>
-            <td class="td-size">大小</td>
-            <td class="td-ctime">创建日期</td>
-        </tr>
-        <!-- 将传上来的files进行遍历 输出HTML标签 -->
-        {% for file in files %}
-            <tr>
-                <td class="td-name"><a href="/download_file/{{file.name}}">{{file.name}}</a></td>
-                <td class="td-size">{{file.size}} B</td>
-                <td class="td-ctime">{{file.ctime}}</td>
-            </tr>
-        {% endfor %}
-    </table>
-    <h4><a href="/upload_file">----->去上传文件</a></h4>
+<h1>图片上传</h1>
+<table class="files-table">
+    <tr>
+        <td class="td-name">文件名</td>
+        <td class="td-size">大小</td>
+        <td class="td-ctime">创建日期</td>
+    </tr>
+</table>
+<h4><a href="/upload_file">----->上传文件</a></h4>
+<!--<h4><a href="/identity_file">&#45;&#45;&ndash;&gt;识别文件</a></h4>-->
 </body>
 </html>
