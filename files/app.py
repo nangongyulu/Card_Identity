@@ -34,8 +34,11 @@ def get_files_data():
         })
     return files
 
-
 @app.route("/")
+def HomePage():
+    return render_template("HomePage.html")
+
+@app.route("/index")
 def index():
     """共享文件主页"""
     return render_template("index.html", files=get_files_data())
@@ -66,7 +69,6 @@ def upload():
     # 上传的网页
 
     return render_template("upload.html")
-
 
 if __name__ == '__main__':
     app.run()
