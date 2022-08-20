@@ -1,8 +1,22 @@
 @charset "utf-8";
 /* CSS Document */
-ul,li,h1,h2,h3,p{ padding:0; margin:0; list-style:none}
-html{ background:url(../static/008.jpg) no-repeat #D8BFD8 center top fixed; background-size: cover}
-body{ width:1000px; background:rgba(255,255,255,0.8); margin:0 auto; line-height:21px}
+ul, li, h1, h2, h3, p {
+    padding: 0;
+    margin: 0;
+    list-style: none
+}
+
+html {
+    background: url(../static/009.jpg) no-repeat #D8BFD8 center top fixed;
+    background-size: cover
+}
+
+body {
+    width: 1000px;
+    background: rgba(255, 255, 255, 0.8);
+    margin: 0 auto;
+    line-height: 21px
+}
 .clear{ clear:both}
 a{ text-decoration:none}
 
@@ -13,11 +27,11 @@ a{ text-decoration:none}
     color:#ffffb3;
     font-size:20px;
 }
-.logo{
-    background:#fff;
-    margin-top:50px
-    padding-bottom:50px
-    padding-top:50px;
+.logo {
+    background: #fff;
+    margin-top: 50px;
+    padding-bottom: 50px;
+    padding-top: 50px;
 }
 /*
 .logo img{
@@ -26,27 +40,26 @@ a{ text-decoration:none}
     height:40px
     margin-left:20px;
 }*/
-.banner{
-    height:700px;
-    background-image:url('../static/009.jpg');
-    background-repeat:repeat-x;
-    background-size:cover;
-    position:relative;
-    margin-top:0px;
+.banner {
+    height: 700px;
+    background-image: url('../static/009.jpg');
+    background-repeat: repeat-x;
+    background-size: cover;
+    position: relative;
+    margin-top: 0;
 }
-.banner h1{
-    margin:100px;
-    margin-left:50px;
-    text-shadow:4px 4px 6px black;
-    color:white;
-    font-size:60px;
-    font-family:"微软雅黑";
+.banner h1 {
+    margin: 100px 100px 100px 50px;
+    text-shadow: 4px 4px 6px black;
+    color: white;
+    font-size: 60px;
+    font-family: "微软雅黑", serif;
 }
-.banner h2{
-    color:white;
-    margin-left:100px;
-    font-family:"华文仿宋";
-    text-shadow:0px 0px 2px red;
+.banner h2 {
+    color: white;
+    margin-left: 100px;
+    font-family: "华文仿宋", serif;
+    text-shadow: 0 0 2px red;
 }
 
 .banner img{ display:block}
@@ -84,9 +97,9 @@ a{ text-decoration:none}
 .feedback span{ float:left;}
 */
 
-.end p{
-    color:#fbc05c;
-    font-size:25px;
-    font-family:"楷体";
-    text-shadow:0 0 4px black;
+.end p {
+    color: #fbc05c;
+    font-size: 25px;
+    font-family: "楷体", serif;
+    text-shadow: 0 0 4px black;
 }
