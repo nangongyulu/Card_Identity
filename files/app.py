@@ -66,7 +66,7 @@ def upload():
     return render_template("upload.html")
 
 
-@app.route('/show/<string:filename>', methods=['GET'])
+@app.route('/ret_show/<string:filename>', methods=['GET'])
 def show_photo(filename):
     file_dir = os.path.join(UPLOAD_PATH, app.config['UPLOAD_FOLDER'])
     if request.method == 'GET':
