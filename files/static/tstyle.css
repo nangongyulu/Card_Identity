@@ -64,25 +64,6 @@ a{ text-decoration:none}
 .pad{ padding:20px; display:block}
 .pics p{ margin:1px; text-align:center}
 
-/*
-.imglist{ width:94%; margin:0 auto}
-.imglist li{ float:left; width:290px; margin:10px ; text-align:center}
-.news li{ padding:5px;}
-*/
-/*
-.title{ text-align:center; color:#F00; padding:10px}
-.fl{ float:left}
-*/
-/*
-.msg>div{ padding:10px}
-.con{ max-width:700px; margin:20px auto}
-.bar{ border:#fff dotted 1px; margin:20px; clear:both; background:#fbc05c; font-weight:bold; padding:12px}
-.feedback{ padding:30px; margin:0 auto; width:450px}
-.feedback li{ margin:15px}
-.feedback  input{ padding:10px; border:#CC6633 solid 1px}
-.btn{ background:#FF9966; color:#000; border:none; padding:10px 30px; margin-left:140px}
-.feedback span{ float:left;}
-*/
 
 .end p{
     color:#ffffb3;
