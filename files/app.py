@@ -35,13 +35,16 @@ def get_files_data():
 
 @app.route("/")
 def HomePage():
-    return render_template("HomePage.html")
+    return render_template("login.html")
 
 @app.route("/index")
 def index():
     """共享文件主页"""
     return render_template("index.html", files=get_files_data())
 
+@app.route("/HomePage")
+def login():
+    return render_template("HomePage.html")
 
 @app.route("/download_file/<filename>")
 def file_content(filename):
