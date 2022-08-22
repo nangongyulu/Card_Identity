@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request, make_response
 import os
-import config
 import time
+
+from flask import Flask, render_template, request
+
+import config
 
 # 创建项目
 app = Flask(__name__)
@@ -50,9 +52,11 @@ def index():
     """共享文件主页"""
     return render_template("index.html", files=get_files_data())
 
+
 @app.route("/HomePage")
 def login():
     return render_template("HomePage.html")
+
 
 @app.route("/upload_file", methods=['GET', 'POST'])
 def upload():
@@ -69,19 +73,10 @@ def upload():
     return render_template("upload.html")
 
 
-@app.route('/ret_show/<string:filename>', methods=['GET'])
-def show_photo(filename):
-    file_dir = os.path.join(UPLOAD_PATH, app.config['UPLOAD_FOLDER'])
-    if request.method == 'GET':
-        if filename is None:
-            pass
-        else:
-            image_data = open(os.path.join(file_dir, '%s' % filename), "rb").read()
-            response = make_response(image_data)
-            response.headers['Content-Type'] = ''
-            return response
-    else:
-        pass
+@app.route('/ret_show', methods=['GET'])
+def ret_show():
+    retsult_list = ['卡号', '姓名', '日期', '商标']
+    return render_template('ret_show.html', retsult_list=retsult_list)
 
 
 if __name__ == '__main__':
