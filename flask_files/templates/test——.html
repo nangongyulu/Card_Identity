@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上传文件</title>
+	<style>
+		label{
+			display:inline-block;
+			width:160px;
+			height:40px;
+			line-height:40px;
+			text-align: center;
+			background:#BE1A21;
+			font-size:18px;
+			color:#fff;
+			cursor:pointer;
+		}
+		/*隐藏默认样式*/
+		input[id=file]{
+			margin-left:-2000px;
+			height:0;
+		}
+	</style>
+	<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+	<!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<div>
+		<label for="file" id="upFile">上传文件</label>
+		<input type="file" id="file">
+	</div>
+	<div>
+		<p id="fileName"></p>
+		<img src="" id="fileImg">
+	</div>
+	<script>
+		$("#file").on("change",function(){
+			//截取路径，获取上传文件名
+			var urlArr = this.value.split("\\");
+			if (this && this.files && this.files[0]) {
+				document.getElementById("fileName").innerHTML = urlArr[urlArr.length-1];
+				var fileUrl = URL.createObjectURL(this.files[0]);
+				document.getElementById("fileImg").src = fileUrl;
+			}else{
+				//兼容IE9以下
+				document.getElementById("fileName").innerHTML = urlArr[urlArr.length-1];
+				document.getElementById("fileImg").style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+                document.getElementById("fileImg").filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = this.value;
+			}
+		});
+	</script>
+</body>
+</html>

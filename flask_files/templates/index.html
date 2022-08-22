@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Flask</title>
+    <style>
+        body {
+            padding: 20px 50px 10px 10px;
+        }
+
+        .files-table {
+            border-radius: 10px;
+            width: 1000px;
+            border: 3px solid blue;
+            background-color: lightyellow;
+        }
+
+        .files-table td {
+            width: 150px;
+            height: 20px;
+            text-align: center;
+            font-size: 25px;
+        }
+
+        .td-name {
+            color: coral;
+        }
+
+        .td-name a, a:link, a:visited {
+            color: coral;
+        }
+
+        .td-size {
+            color: dodgerblue;
+        }
+
+        .td-ctime {
+            color: goldenrod;
+        }
+
+        h4 a {
+            text-decoration: none;
+            border: 3px solid cyan;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>图片上传</h1>
+<table class="files-table">
+    <tr>
+        <td class="td-name">文件名</td>
+        <td class="td-size">大小</td>
+        <td class="td-ctime">创建日期</td>
+    </tr>
+</table>
+<h4><a href="/upload_file">----->上传文件</a></h4>
+</body>
+</html>
