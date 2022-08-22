@@ -75,8 +75,12 @@ def upload():
 
 @app.route('/ret_show', methods=['GET'])
 def ret_show():
-    retsult_list = ['卡号', '姓名', '日期', '商标']
-    return render_template('ret_show.html', retsult_list=retsult_list)
+    f = open('../result/result_show', 'r')
+    ret_list = f.readlines()
+    print(ret_list)
+    f.close()
+
+    return render_template('ret_show.html', result_list=ret_list)
 
 
 if __name__ == '__main__':
