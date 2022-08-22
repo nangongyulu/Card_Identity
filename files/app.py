@@ -41,8 +41,13 @@ def get_files_data():
 
 
 @app.route("/")
-def HomePage():
+def login():
     return render_template("login.html")
+
+
+@app.route("/intro")
+def intro():
+    return render_template("intro.html")
 
 
 @app.route("/index")
@@ -50,9 +55,11 @@ def index():
     """共享文件主页"""
     return render_template("index.html", files=get_files_data())
 
+
 @app.route("/HomePage")
-def login():
+def HomePage():
     return render_template("HomePage.html")
+
 
 @app.route("/upload_file", methods=['GET', 'POST'])
 def upload():

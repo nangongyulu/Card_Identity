@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 ul,li,h1,h2,h3,p{ padding:0; margin:0; list-style:none}
-html{ background:url(../static/015.jpg) no-repeat center top fixed; background-size: cover}
+html{ background:url(../static/page_img/015.jpg) no-repeat center top fixed; background-size: cover}
 body{ width:1000px; background:rgba(255,255,255,0.8); margin:0 auto; line-height:21px}
 .clear{ clear:both}
 a{ text-decoration:none}
@@ -9,9 +9,9 @@ a{ text-decoration:none}
 .menu li { border-radius:30px; float:left; margin:12px; padding:8px 13px ; width:148px}
 .menu li a{
     list-style:none;
-    text-shadow:2px 2px 4px black;
-    color:#ffffb3;
-    font-size:20px;
+    text-shadow:1px 1px 3px black;
+    color: orange;
+    font-size:23px;
 }
 .logo{
     background:#fff;
@@ -19,16 +19,10 @@ a{ text-decoration:none}
     padding-bottom:50px
     padding-top:50px;
 }
-/*
-.logo img{
-    display:block;
-    width:200px;
-    height:40px
-    margin-left:20px;
-}*/
+
 .banner{
     height:700px;
-    background-image:url('../static/016.jpg');
+    background-image:url('../static/page_img/016.jpg');
     background-repeat:repeat-x;
     background-size:cover;
     position:relative;
@@ -37,20 +31,20 @@ a{ text-decoration:none}
 .banner h1{
     margin:100px;
     margin-left:50px;
-    text-shadow:4px 4px 6px black;
-    color:white;
+    text-shadow:2px 2px 6px black;
+    color:#4dc4ff;
     font-size:60px;
     font-family:"微软雅黑";
 }
 .banner h2{
-    color:white;
+    color:#666666;
     margin-left:100px;
     font-family:"华文仿宋";
-    text-shadow:0px 0px 2px #8f00b3;
+    text-shadow:0px 0px 2px white;
 }
 
 .banner img{ display:block}
-.menu{ clear:both; width:100%; text-align:center;  background:#fbc05c}
+.menu{ clear:both; width:100%; text-align:center;  background:#ffff99}
 
 
 
