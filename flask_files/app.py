@@ -13,7 +13,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 # 全局变量 共享的文件夹路径 可以根据需求更改
 UPLOAD_FOLDER = 'image'
 # 上传的文件夹路径
-UPLOAD_PATH = os.path.join(app.root_path, 'image')
+UPLOAD_PATH = os.path.join(app.root_path, '../image')
 
 
 def allowed_file(filename):
@@ -75,7 +75,7 @@ def upload():
 
 @app.route('/ret_show', methods=['GET'])
 def ret_show():
-    f = open('../result/result_show', 'r')
+    f = open('../result/result_show.txt', 'r')
     ret_list = f.readlines()
     print(ret_list)
     f.close()
