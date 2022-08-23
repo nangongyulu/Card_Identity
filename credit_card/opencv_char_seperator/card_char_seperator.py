@@ -2,6 +2,7 @@
 import cv2 as cv
 import numpy as np
 
+
 # 信用卡信息区域拆分成为候选字符列表   卡号 card_number  有效日期  date   姓名 name
 # 参数： 信用卡信息候选区域（某一个），candidate_card_image
 # 返回值： 拆分后的信用卡信息字符 按顺序生成信用卡信息字符候选列表
@@ -50,7 +51,7 @@ def get_candidate_card_number_chars(candidate_card_number_image):
 # 信用卡有效日期拆分字符
 def get_candidate_card_date_chars(candidate_card_date_image):
     # 1.图片预处理： 灰度图 二值化
-    gray_image =cv.cvtColor(candidate_card_date_image, cv.COLOR_BGR2GRAY)
+    gray_image = cv.cvtColor(candidate_card_date_image, cv.COLOR_BGR2GRAY)
     is_success, binary_image = cv.threshold(gray_image, 0, 255, cv.THRESH_OTSU)
 
     # 2.向内缩进 去除外边框

@@ -1,15 +1,15 @@
-'''
+"""
 使用简单卷积神经网络分类，网络结构为：
 Conv -> ReLU -> Max Pooling -> Conv -> ReLU -> Max Pooling ->
 FC1(1024) -> ReLU -> Dropout -> Affine -> Softmax
-'''
+"""
 
 import os
 import numpy as np
 import cv2 as cv
 import tensorflow._api.v2.compat.v1 as tf
-tf.disable_v2_behavior()
 
+tf.disable_v2_behavior()
 
 MODEL_PATH = "model/cnn_enu/enu.ckpt"
 TRAIN_DIR = "data/enu_train"
@@ -20,11 +20,10 @@ IMAGE_HEIGHT = 20
 # 给出类别数、类别-数值 字典
 CLASSIFICATION_COUNT = 26
 LABEL_DICT = {
-	'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7,	'I': 8,
-	'J': 9, 'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17,
-	'S': 18, 'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25
+    'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8,
+    'J': 9, 'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17,
+    'S': 18, 'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25
 }
-
 
 # 设置GPU内存为陆续分配，防止一次性的全部分配GPU内存，导致系统过载
 physical_devices = tf.config.list_physical_devices('GPU')
@@ -49,6 +48,7 @@ def load_data(dir_path):
                 labels.append(LABEL_DICT[item])
     return np.array(data), np.array(labels)
 
+
 # 本质：完成数据的正则化
 def normalize_data(data):
     return (data - data.mean()) / data.max()
@@ -58,8 +58,8 @@ def normalize_data(data):
 def onehot_labels(labels):
     onehots = np.zeros((len(labels), CLASSIFICATION_COUNT))
     # np.zeros()创建新数组
-    for i in np.arange(len(labels)):
-        onehots[i, labels[i]] = 1
+    for lab in np.arange(len(labels)):
+        onehots[lab, labels[lab]] = 1
     return onehots
 
 
@@ -68,14 +68,17 @@ def weight_variable(shape):
     initial = tf.truncated_normal(shape, stddev=0.1)
     return tf.Variable(initial)
 
+
 # 设置偏置，并初始化
 def bias_variable(shape):
     initial = tf.constant(0.1, shape=shape)
     return tf.Variable(initial)
 
+
 # 设置卷积层
-def conv2d(x, W):
-    return tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')
+def conv2d(x, w):
+    return tf.nn.conv2d(x, w, strides=[1, 1, 1, 1], padding='SAME')
+
 
 # 设置池化层
 def max_pool_2x2(x):
@@ -105,7 +108,6 @@ W_fc1 = weight_variable([5 * 5 * 64, 1024])  # 全连接第一个隐藏层神经
 b_fc1 = bias_variable([1024])
 h_pool2_flat = tf.reshape(h_pool2, [-1, 5 * 5 * 64])  # 转成-1列
 h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat, W_fc1) + b_fc1)  # Affine+ReLU
-
 
 # 在全链接层之后，往往会跟着 Dropout 操作。
 keep_prob = tf.placeholder(tf.float32)  # 定义Dropout的比例
@@ -151,7 +153,7 @@ with tf.Session() as sess:
     # 对训练集的标签向量执行独热编码
     train_labels = onehot_labels(train_labels)
     # 探查训练集
-    print("装载%d条数据，每条数据%d个特征" % (train_data.shape))
+    print("装载%d条数据，每条数据%d个特征" % train_data.shape)
 
     # 获取训练集的总样本数
     train_samples_count = len(train_data)
@@ -167,7 +169,7 @@ with tf.Session() as sess:
     # 对测试集的标签向量执行独热编码
     test_labels = onehot_labels(test_labels)
     # 探查测试集
-    print("装载%d条数据，每条数据%d个特征" % (test_data.shape))
+    print("装载%d条数据，每条数据%d个特征" % test_data.shape)
 
     # 天花板取整（np.ceil），获取迭代次数（此处，就是批次）
     iters = int(np.ceil(train_samples_count / batch_size))
@@ -207,4 +209,3 @@ with tf.Session() as sess:
     # 注意：测试时，不需要dropout！
     test_accuracy = accuracy.eval(feed_dict={x: test_data, y_: test_labels, keep_prob: 1.0})
     print('Test accuracy %g' % test_accuracy)  # 约0.97~0.98
-
