@@ -1,0 +1,2 @@
+model_checkpoint_path: "enu.ckpt"
+all_model_checkpoint_paths: "enu.ckpt"
