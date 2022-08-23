@@ -1,6 +1,7 @@
 import cv2 as cv
-import tensorflow._api.v2.compat.v1 as tf
-tf.disable_v2_behavior()
+from tensorflow._api.v2.compat.v1 import disable_v2_behavior
+
+disable_v2_behavior()
 
 from opencv_ml.cnn_number_predict import load_number_model
 from opencv_char_seperator.card_char_seperator import get_candidate_card_number_chars
