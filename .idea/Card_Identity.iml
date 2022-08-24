@@ -11,8 +11,7 @@
   <component name="TemplatesService">
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/flask_cardidentity/templates" />
-        <option value="$MODULE_DIR$/files/templates" />
+        <option value="$MODULE_DIR$/flask_files/templates" />
       </list>
     </option>
   </component>

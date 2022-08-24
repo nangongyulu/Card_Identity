@@ -1,7 +1,4 @@
 import backward as bw
-import app
-
-
 if __name__ == '__main__':
     '''
     训练过程调用
@@ -12,11 +9,3 @@ if __name__ == '__main__':
     train = False
     if train:
         bw.main()
-
-    '''
-    测试过程调用
-    file_path表示用于测试的文件路径
-    若想测试其他图片，请将file_path修改成相应的路径
-    '''
-    file_path = 'test_images/img_3.png'
-    app.application(file_path)

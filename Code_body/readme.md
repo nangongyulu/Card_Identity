@@ -1,15 +1,13 @@
 # Background
 银行卡号识别系统-基于Tensorflow&openCV
 
-视频地址：[bilibili:【深度学习】银行卡号识别系统-基于TensorFlow&OpenCV](https://www.bilibili.com/video/BV1U7411i7rm)
-
 输入用例：待识别银行卡图片
 
 ![image](test_images/img_3.png)
 
 输出用例：识别结果
 
-![image]()
+![img.png](img.png)
 
 项目结构：
 ```
@@ -20,7 +18,7 @@ train.py: 入口文件
 PreProcess.py & ImgHandle.py: 图像处理代码
 forward.py: 深度学习模型前向传播代码
 backward.py: 深度学习模型反向传播代码
-app.py: 模型调用代码
+model_called.py: 模型调用代码
 ```
 # Enviroment
 语言：`Python3.7`
@@ -28,19 +26,6 @@ app.py: 模型调用代码
 深度学习框架：`TensorFlow`
 
 图像处理：`OpenCV`
-# Install
-`Python3`运行环境：[下载地址](https://www.python.org/downloads/)
-
-`TensorFlow`安装：
-```
-pip install tensorflow
-```
-`OpenCV`安装(清华镜像)：
-```
-pip install opencv-python -i https://pypi.tuna.tsinghua.edu.cn/simple
-```
-# Usage
-Clone库到本地
 
 ### 训练模型
 删除`model`文件夹内容
@@ -56,4 +41,3 @@ Clone库到本地
 修改变量`file_path`的值为想要识别的图片路径
 
 运行`train.py`
-# Pack

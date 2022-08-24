@@ -1,7 +1,7 @@
 import tensorflow._api.v2.compat.v1 as tf
-import forward
+import Code_body.forward as forward
 import os
-import ImgHandle as IMG
+import Code_body.ImgHandle as IMG
 import random
 
 tf.disable_v2_behavior()
@@ -9,7 +9,7 @@ BATCH_SIZE = 20
 REGULARIZER = 0.001
 STEPS = 10000
 MOVING_AVERAGE_DECAY = 0.01
-MODEL_SAVE_PATH = "./model/"
+MODEL_SAVE_PATH = "../Code_body/model/"
 MODEL_NAME = "train_model"
 FILE_NAME = "Classification.xlsx"
 
