@@ -3,7 +3,7 @@
 
 输入用例：待识别银行卡图片
 
-![image](./Code_body/test_images/img_3.png)
+![image](./for_test_image/img_3.png)
 
 输出用例：识别结果
 
