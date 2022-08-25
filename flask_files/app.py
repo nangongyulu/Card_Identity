@@ -13,7 +13,7 @@ app.config['JSON_AS_ASCII'] = False
 ALLOWED_EXTENSIONS = {'png', 'jpg'}
 # 上传的文件夹路径
 UPLOAD_PATH = os.path.join(app.root_path, '../image/')
-RESULT_PATH=os.path.join(app.root_path, '../result/')
+RESULT_PATH = os.path.join(app.root_path, '../result/')
 
 
 # 获取文件信息的函数
@@ -91,7 +91,6 @@ def de_file():
         os.remove('../result/' + f)
 
 
-
 @app.route('/ret_show', methods=['GET'])
 def ret_show():
     os.system('python ../Code_body/identity_card.py')
@@ -104,4 +103,5 @@ def ret_show():
 
 
 if __name__ == '__main__':
-    app.run()
+    # app.run()
+    os.system('python ../Code_body/identity_card.py')
