@@ -1,5 +1,5 @@
-from Code_body import backward as bw
-from Code_body import model_called as model_called
+from picture_identity import backward as bw
+from picture_identity import model_called as model_called
 import os
 
 

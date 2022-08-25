@@ -5,7 +5,7 @@ from os import path
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import CombinedMultiDict
 from form import UploadForm
-from Code_body.identity_card import identityCard
+from picture_identity.identity_card import identityCard
 
 # 创建项目
 app = Flask(__name__)
@@ -16,7 +16,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg'}
 pwd = os.getcwd()
 ROOT_PATH = os.path.dirname(pwd)
 UPLOAD_PATH = ROOT_PATH + '/image/'
-DIR_PY = ROOT_PATH + '/Code_body/' + 'identity_card'
+DIR_PY = ROOT_PATH + '/picture_identity/' + 'identity_card'
 
 
 # 获取文件信息的函数
@@ -51,10 +51,10 @@ def intro():
     return render_template("intro.html")
 
 
-@app.route("/index")
-def index():
-    """共享文件主页"""
-    return render_template("index.html", files=get_files_data())
+# @app.route("/index")
+# def index():
+#     """共享文件主页"""
+#     return render_template("index.html", files=get_files_data())
 
 
 @app.route("/HomePage")
@@ -62,11 +62,11 @@ def HomePage():
     return render_template("HomePage.html")
 
 
-@app.route("/upload_file", methods=['GET', 'POST'])
+@app.route("/upload", methods=['GET', 'POST'])
 def upload():
     """上传文件的URL 支持GET/POST请求"""
     if request.method == 'GET':
-        return render_template('upload.html')
+        return render_template('upload.html',files=get_files_data())
     else:
         filelist = os.listdir(ROOT_PATH+'/image/')
         for f in filelist:

@@ -15,9 +15,6 @@ a{ text-decoration:none}
 }
 .logo{
     background:#fff;
-    margin-top:50px;
-    padding-bottom:50px;
-    padding-top:50px;
 }
 
 .banner{
@@ -38,14 +35,13 @@ a{ text-decoration:none}
 .banner h2{
     color:#666666;
     margin-left:100px;
+    margin-bottom: 15px;
     font-family: "华文仿宋", serif;
     text-shadow:0 0 2px white;
 }
 
 .banner img{ display:block}
 .menu{ clear:both; width:100%; text-align:center;  background:#ffff99}
-
-
 
 .right{ float:right; width:660px; padding:20px}
 .left{ min-height:300px; float:left; width:480px; margin-left:30px; padding:10px}
@@ -56,7 +52,6 @@ a{ text-decoration:none}
 .produce { line-height:30px}
 .pad{ padding:20px; display:block}
 .pics p{ margin:1px; text-align:center}
-
 
 .end p{
     color:#ffffb3;

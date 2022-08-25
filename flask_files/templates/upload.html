@@ -2,49 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>上传文件</title>
-    <style>
-        body {
-            padding: 20px 100px 10px 50px;
-        }
-        h1 {
-            color: orange;
-        }
-        form input{
-            border: 1px solid;
-            border-radius: 5px;
-            width:200px
-        }
-        form {
-            border-radius: 10px;
-            border: 3px solid green;
-            width: 400px;
-            height: 145px;
-            background-color:lightskyblue;
-        }
-        form h4{
-            padding-left:20px
-        }
-
-        form button {
-            border-radius: 5px;
-            position: relative;
-            width: 80px;
-            height: 40px;
-            color: green;
-            font-size: 20px;
-            left: 20px;
-            background-color:PeachPuff
-        }
-    </style>
+    <link href="../static/upload.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>upload</title>
 </head>
 <body>
-    <h1>上传文件</h1>
-    <form  action="" method="post" enctype="multipart/form-data">
-        <h4>请选择上传的文件：<input type="file" name="file" class="input"/></h4>
-        <button type="submit" value="上传" class="input button">提交</button>
-    </form>
+    <div class="logo"><img src="../static/nankai.jpg" width="200" height="40" alt=""></div>
+    <div class="menu">
+        <ul class="center">
+            <li><a><b>图片上传</b></a></li>
+            <li><a href="/ret_show"><b>识别结果</b></a></li>
+            <li><a href="/HomePage"><b>主页</b></a></li>
+        </ul>
+        <p class="clear"></p>
+    </div>
+
+    <div class="banner">
+        <div class="w">
+            <br>
+            <h1>上传图片<br></h1>
+            <form method="post" enctype="multipart/form-data">
+                <h3>请选择上传的文件：<input type="file" name="file" class="input"/></h3>
+                <button type="submit" value="上传" class="button button1">提交</button>
+            </form>
+        </div>
+
+    </div>
+<div class="end">
+    <p><strong>>>——组长说的队——<<</strong></p>
+</div>
+
 </body>
 </html>

@@ -7,7 +7,7 @@
 
 输出用例：识别结果
 
-![img.png](./Code_body/img.png)
+![img.png](picture_identity/img.png)
 
 # 项目结构
 ## 后端核心代码 Code_body
@@ -63,11 +63,11 @@ result:识别结果输出
 ### 3.正式使用
 运行flask_files下app.py文件，进入前端界面
 
-![img.png](./Code_body/login.png)
+![img.png](picture_identity/login.png)
 
 先注册后登录，进入主页面（HomePage）
 
-![img.png](./Code_body/homepage.png)
+![img.png](picture_identity/homepage.png)
 
 主页面中可选择功能简介、图片上传、识别结果。
 

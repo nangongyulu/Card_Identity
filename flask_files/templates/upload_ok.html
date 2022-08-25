@@ -2,11 +2,90 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>上传成功提示</title>
+    <link href="../static/upload.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>upload_ok</title>
+    <style>
+        /* CSS Document */
+        ul,li,h1,h2,h3,p{ padding:0; margin:0; list-style:none}
+        html{ background:url(../static/015.jpg) no-repeat center top fixed; background-size: cover}
+        body{ width:1000px; background:rgba(255,255,255,0.8); margin:0 auto; line-height:21px}
+        .clear{ clear:both}
+        a{ text-decoration:none}
+
+        .menu li { border-radius:30px; float:left; margin:12px; padding:8px 13px ; width:148px}
+        .menu li a{
+            list-style:none;
+            text-shadow:1px 1px 3px black;
+            color: orange;
+            font-size:23px;
+        }
+        .logo{
+            background:#fff;
+        }
+
+        .banner{
+            height:700px;
+            background-image:url('../static/016.jpg');
+            background-repeat:repeat-x;
+            background-size:cover;
+            position:relative;
+            margin-top:0;
+        }
+        .banner h2{
+            margin-top:50px;
+            margin-left:60px;
+            letter-spacing: 1px;
+            color:#4d4d4d;
+            font-size:25px;
+            font-family: "微软雅黑", serif;
+            font-weight: 900;
+        }
+        .banner h2 a{
+            color:#ff751a;
+        }
+
+        .banner img{ display:block}
+        .menu{ clear:both; width:100%; text-align:center;  background:#ffff99}
+
+        .right{ float:right; width:660px; padding:20px}
+        .left{ min-height:300px; float:left; width:480px; margin-left:30px; padding:10px}
+        .content { clear:both; padding-bottom:20px; font-size:14px; display:block ; color:#333; width:100%}
+        /*.avc{ font-size:20px; line-height:40px; margin-top:30px}*/
+        .end{ clear:both; background:#fbc05c; color:#fff; padding:20px 0; text-align:center;}
+        /*.produce img{  margin:0 20px 20px 0}*/
+        .produce { line-height:30px}
+        .pad{ padding:20px; display:block}
+        .pics p{ margin:1px; text-align:center}
+
+
+        .end p{
+            color:#ffffb3;
+            font-size:25px;
+            font-family: "楷体", serif;
+            text-shadow:0 0 4px black;
+        }
+    </style>
 </head>
 <body>
-    <h2>"图片上传成功，请前往<a href="/HomePage">主页</a>进行其他操作！</h2>
+    <div class="logo"><img src="../static/nankai.jpg" width="200" height="40" alt=""></div>
+    <div class="menu">
+        <ul class="center">
+            <li><a><b>图片上传</b></a></li>
+            <li><a href="/HomePage"><b>主页</b></a></li>
+        </ul>
+        <p class="clear"></p>
+    </div>
+
+    <div class="banner">
+        <div class="w">
+            <br>
+            <h2><b>图片上传成功! 请前往</b><a href="/HomePage">主页</a><b>进行其他操作~</b></h2>
+        </div>
+    </div>
+<div class="end">
+    <p><strong>>>——组长说的队——<<</strong></p>
+</div>
 </body>
 </html>

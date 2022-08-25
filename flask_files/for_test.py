@@ -6,11 +6,11 @@
 #
 # import sys
 # import os
-# from Code_body.identity_card import identityCard
+# from picture_identity.identity_card import identityCard
 #
 # pwd = os.getcwd()
 # ROOT_PATH = os.path.dirname(pwd)
-# sys.path.append(ROOT_PATH + '/Code_body')
+# sys.path.append(ROOT_PATH + '/picture_identity')
 #
 # if __name__=='__main__':
 #    identityCard()
