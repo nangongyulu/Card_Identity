@@ -1,7 +1,7 @@
 import tensorflow._api.v2.compat.v1 as tf
-import Code_body.forward as forward
+from Code_body import forward
 import os
-import Code_body.ImgHandle as IMG
+from Code_body import ImgHandle as IMG
 import random
 
 tf.disable_v2_behavior()

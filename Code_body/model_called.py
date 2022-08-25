@@ -1,8 +1,11 @@
 import tensorflow as tf
-import Code_body.backward as backward
-import Code_body.forward as forward
-import Code_body.PreProcess as PP
+from Code_body import backward
+from Code_body import forward
+from Code_body import PreProcess as PP
+import os
 
+pwd = os.getcwd()
+ROOT_PATH = os.path.dirname(pwd)
 
 def restore_model(testArr):
     with tf.Graph().as_default():
@@ -25,14 +28,8 @@ def restore_model(testArr):
                 return -1
 
 
-def text_create(name):
-    desktop_path = '../result/'  # 新创建的txt文件的存放路径
-    full_path = desktop_path + name + '.txt'  # 也可以创建一个.doc的word文档
-    file = open(full_path, 'w')
-    file.close()
-
-
 def application(file_path):
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
     data = PP.image_process(file_path)
     lable = ''
     if len(data) == 0:
@@ -42,7 +39,7 @@ def application(file_path):
         for i in range(len(data)):
             preValue = restore_model(data[i:i + 1])[0]
             lable += str(preValue)
-        text_create('result_show')
-        fp = open("../result/result_show.txt", "w+")  # w+ 如果文件不存在就创建
+        fp = open(ROOT_PATH+'/result/result_show.txt', "w+")  # w+ 如果文件不存在就创建
         print("识别结果：" + lable, file=fp)
         fp.close()
+

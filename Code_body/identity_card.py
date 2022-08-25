@@ -1,5 +1,5 @@
-import Code_body.backward as bw
-import Code_body.model_called as model_called
+from Code_body import backward as bw
+from Code_body import model_called as model_called
 import os
 
 
@@ -19,9 +19,10 @@ def identityCard():
     file_path表示用于测试的文件路径
     若想测试其他图片，请将file_path修改成相应的路径
     '''
-    filelist = os.listdir('../image/')
+    pwd = os.getcwd()
+    filelist = os.listdir(os.path.dirname(pwd) + '/image/')
     for f in filelist:
-        model_called.application('../image/' + f)
+        model_called.application(os.path.dirname(pwd) + '/image/' + f)
 
 
 if __name__ == '__main__':

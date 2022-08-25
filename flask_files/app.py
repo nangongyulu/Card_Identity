@@ -5,6 +5,7 @@ from os import path
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import CombinedMultiDict
 from form import UploadForm
+from Code_body.identity_card import identityCard
 
 # 创建项目
 app = Flask(__name__)
@@ -12,8 +13,10 @@ app.config['DEBUG'] = True
 app.config['JSON_AS_ASCII'] = False
 ALLOWED_EXTENSIONS = {'png', 'jpg'}
 # 上传的文件夹路径
-UPLOAD_PATH = os.path.join(app.root_path, '../image/')
-RESULT_PATH = os.path.join(app.root_path, '../result/')
+pwd = os.getcwd()
+ROOT_PATH = os.path.dirname(pwd)
+UPLOAD_PATH = ROOT_PATH + '/image/'
+DIR_PY = ROOT_PATH + '/Code_body/' + 'identity_card'
 
 
 # 获取文件信息的函数
@@ -65,9 +68,9 @@ def upload():
     if request.method == 'GET':
         return render_template('upload.html')
     else:
-        filelist = os.listdir('../image/')
+        filelist = os.listdir(ROOT_PATH+'/image/')
         for f in filelist:
-            os.remove('../image/' + f)
+            os.remove(ROOT_PATH+'/image/' + f)
         if not path.exists(UPLOAD_PATH):
             os.makedirs(UPLOAD_PATH)  # 路径不存在时创建路径
         form = UploadForm(CombinedMultiDict([request.form, request.files]))
@@ -86,16 +89,18 @@ def upload():
 
 
 def de_file():
-    filelist = os.listdir('../result/')
+    filelist = os.listdir(ROOT_PATH+'/result/')
     for f in filelist:
-        os.remove('../result/' + f)
+        os.remove(ROOT_PATH+'/result/' + f)
 
 
 @app.route('/ret_show', methods=['GET'])
 def ret_show():
-    os.system('python ../Code_body/identity_card.py')
-    file = open('../result/result_show.txt', 'w+')
+    de_file()
+    identityCard()
+    file = open(ROOT_PATH+'/result/result_show.txt', 'r')
     ret_list = file.readlines()
+    print('111111')
     print(ret_list)
     file.close()
 
@@ -103,5 +108,4 @@ def ret_show():
 
 
 if __name__ == '__main__':
-    # app.run()
-    os.system('python ../Code_body/identity_card.py')
+    app.run()
