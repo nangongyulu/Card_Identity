@@ -12,7 +12,8 @@ app.config['DEBUG'] = True
 app.config['JSON_AS_ASCII'] = False
 ALLOWED_EXTENSIONS = {'png', 'jpg'}
 # 上传的文件夹路径
-UPLOAD_PATH = os.path.join(app.root_path, '../image')
+UPLOAD_PATH = os.path.join(app.root_path, '../image/')
+RESULT_PATH=os.path.join(app.root_path, '../result/')
 
 
 # 获取文件信息的函数
@@ -55,12 +56,6 @@ def index():
 
 @app.route("/HomePage")
 def HomePage():
-    filelist = os.listdir('../image/')
-    for f in filelist:
-        os.remove('../image/'+f)
-    # filelist = os.listdir('../result/')
-    # for f in filelist:
-    #     os.remove('../result/'+f)
     return render_template("HomePage.html")
 
 
@@ -70,6 +65,9 @@ def upload():
     if request.method == 'GET':
         return render_template('upload.html')
     else:
+        filelist = os.listdir('../image/')
+        for f in filelist:
+            os.remove('../image/' + f)
         if not path.exists(UPLOAD_PATH):
             os.makedirs(UPLOAD_PATH)  # 路径不存在时创建路径
         form = UploadForm(CombinedMultiDict([request.form, request.files]))
@@ -87,10 +85,17 @@ def upload():
             return "仅支持jpg和png格式的图片!"
 
 
+def de_file():
+    filelist = os.listdir('../result/')
+    for f in filelist:
+        os.remove('../result/' + f)
+
+
+
 @app.route('/ret_show', methods=['GET'])
 def ret_show():
     os.system('python ../Code_body/identity_card.py')
-    file = open('../result/result_show.txt', 'r')
+    file = open('../result/result_show.txt', 'w+')
     ret_list = file.readlines()
     print(ret_list)
     file.close()

@@ -25,6 +25,13 @@ def restore_model(testArr):
                 return -1
 
 
+def text_create(name):
+    desktop_path = '../result/'  # 新创建的txt文件的存放路径
+    full_path = desktop_path + name + '.txt'  # 也可以创建一个.doc的word文档
+    file = open(full_path, 'w')
+    file.close()
+
+
 def application(file_path):
     data = PP.image_process(file_path)
     lable = ''
@@ -35,8 +42,7 @@ def application(file_path):
         for i in range(len(data)):
             preValue = restore_model(data[i:i + 1])[0]
             lable += str(preValue)
-        desktop_path = '../result'  # 新创建的txt文件的存放路径
-        full_path = desktop_path + 'result_show' + '.txt'  # 也可以创建一个.doc的word文档
-        fp = open(full_path, 'w+')  # r 的含义为可进行读
+        text_create('result_show')
+        fp = open("../result/result_show.txt", "w+")  # w+ 如果文件不存在就创建
         print("识别结果：" + lable, file=fp)
         fp.close()
