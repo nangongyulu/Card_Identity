@@ -1,22 +1,8 @@
 @charset "utf-8";
 /* CSS Document */
-ul, li, h1, h2, h3, p {
-    padding: 0;
-    margin: 0;
-    list-style: none
-}
-
-html {
-    background: url(015.jpg) no-repeat center top fixed;
-    background-size: cover
-}
-
-body {
-    width: 1000px;
-    background: rgba(255, 255, 255, 0.8);
-    margin: 0 auto;
-    line-height: 21px
-}
+ul,li,h1,h2,h3,p{ padding:0; margin:0; list-style:none}
+html{ background:url(../static/015.jpg) no-repeat center top fixed; background-size: cover}
+body{ width:1000px; background:rgba(255,255,255,0.8); margin:0 auto; line-height:21px}
 .clear{ clear:both}
 a{ text-decoration:none}
 
@@ -27,33 +13,33 @@ a{ text-decoration:none}
     color: orange;
     font-size:23px;
 }
-.logo {
-    background: #fff;
-    margin-top: 50px;
-    padding-bottom: 50px;
-    padding-top: 50px;
+.logo{
+    background:#fff;
+    margin-top:50px;
+    padding-bottom:50px;
+    padding-top:50px;
 }
 
-.banner {
-    height: 700px;
-    background-image: url('016.jpg');
-    background-repeat: repeat-x;
-    background-size: cover;
-    position: relative;
-    margin-top: 0;
+.banner{
+    height:700px;
+    background-image:url('../static/016.jpg');
+    background-repeat:repeat-x;
+    background-size:cover;
+    position:relative;
+    margin-top:0;
 }
-.banner h1 {
+.banner h1{
     margin: 100px 100px 100px 50px;
-    text-shadow: 2px 2px 6px black;
-    color: #4dc4ff;
-    font-size: 60px;
+    text-shadow:2px 2px 6px black;
+    color:#4dc4ff;
+    font-size:60px;
     font-family: "微软雅黑", serif;
 }
-.banner h2 {
-    color: #666666;
-    margin-left: 100px;
+.banner h2{
+    color:#666666;
+    margin-left:100px;
     font-family: "华文仿宋", serif;
-    text-shadow: 0 0 2px white;
+    text-shadow:0 0 2px white;
 }
 
 .banner img{ display:block}
@@ -72,9 +58,9 @@ a{ text-decoration:none}
 .pics p{ margin:1px; text-align:center}
 
 
-.end p {
-    color: #ffffb3;
-    font-size: 25px;
+.end p{
+    color:#ffffb3;
+    font-size:25px;
     font-family: "楷体", serif;
-    text-shadow: 0 0 4px black;
+    text-shadow:0 0 4px black;
 }

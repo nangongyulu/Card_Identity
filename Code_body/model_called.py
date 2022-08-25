@@ -5,7 +5,7 @@ import Code_body.PreProcess as PP
 
 
 def restore_model(testArr):
-    with tf.Graph().as_default() as tg:
+    with tf.Graph().as_default():
         x = tf.compat.v1.placeholder(tf.float32, [None, forward.INPUT_NODE])
         y = forward.forward(x, None)
         preValue = tf.argmax(y, 1)
@@ -33,8 +33,10 @@ def application(file_path):
     else:
         print("正在识别......")
         for i in range(len(data)):
-            preValue = restore_model(data[i:i + 1])  # [0]
+            preValue = restore_model(data[i:i + 1])[0]
             lable += str(preValue)
-        fp = open("../result/result_show.txt", "a+")  # a+ 如果文件不存在就创建。存在就在文件内容的后面继续追加
+        desktop_path = '../result'  # 新创建的txt文件的存放路径
+        full_path = desktop_path + 'result_show' + '.txt'  # 也可以创建一个.doc的word文档
+        fp = open(full_path, 'w+')  # r 的含义为可进行读
         print("识别结果：" + lable, file=fp)
         fp.close()

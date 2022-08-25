@@ -3,7 +3,6 @@ import os
 import numpy as np
 import random
 
-
 data = []
 label = []
 
@@ -56,12 +55,11 @@ def get_img(img, file):
 
     i = 0
     for m in range(len(Position)):
-        if Position[m][3]/(Position[m][2]-Position[m][0]) > 1 and Position[m][3]/(Position[m][2]-Position[m][0]) < 5:
+        if Position[m][3] / (Position[m][2] - Position[m][0]) > 1 and Position[m][3] / (
+                Position[m][2] - Position[m][0]) < 5:
             temp_img = img[Position[m][1]:Position[m][3], Position[m][0]:Position[m][2]]
 
             temp_img = cv2.resize(temp_img, (16, 16))
-
-
 
             blur1 = cv2.GaussianBlur(temp_img, (1, 1), 0)  # 高斯模糊
             blur2 = cv2.GaussianBlur(temp_img, (3, 3), 0)  # 高斯模糊
@@ -94,16 +92,16 @@ def get_img(img, file):
                     temp_data.append(float(noise[hx, wx]))
             data.append(temp_data)
 
-            temp_data = []                                      #左移
+            temp_data = []  # 左移
             for hx in range(h0):
                 for wx in range(w0):
-                    if wx < w0-1:
-                        temp_data.append(float(temp_img[hx, wx+1]))
+                    if wx < w0 - 1:
+                        temp_data.append(float(temp_img[hx, wx + 1]))
                     else:
                         temp_data.append(255.0)
             data.append(temp_data)
 
-            temp_data = []                                      # 右移
+            temp_data = []  # 右移
             for hx in range(h0):
                 for wx in range(w0):
                     if wx > 0:
@@ -112,21 +110,21 @@ def get_img(img, file):
                         temp_data.append(255.0)
             data.append(temp_data)
 
-            temp_data = []                                      # 上移
+            temp_data = []  # 上移
             for hx in range(h0):
-                if hx < h0-1:
+                if hx < h0 - 1:
                     for wx in range(w0):
-                        temp_data.append(float(temp_img[hx+1, wx]))
+                        temp_data.append(float(temp_img[hx + 1, wx]))
                 else:
                     for wx in range(w0):
                         temp_data.append(255.0)
             data.append(temp_data)
 
-            temp_data = []                                      # 下移
+            temp_data = []  # 下移
             for hx in range(h0):
                 if hx > 0:
                     for wx in range(w0):
-                        temp_data.append(float(temp_img[hx-1, wx]))
+                        temp_data.append(float(temp_img[hx - 1, wx]))
                 else:
                     for wx in range(w0):
                         temp_data.append(255.0)
@@ -138,12 +136,12 @@ def get_img(img, file):
             i += 1
 
 
-def sp_noise(image,prob):
-    '''
+def sp_noise(image, prob):
+    """
     添加椒盐噪声
     prob:噪声比例
-    '''
-    output = np.zeros(image.shape,np.uint8)
+    """
+    output = np.zeros(image.shape, np.uint8)
     thres = 1 - prob
     for i in range(image.shape[0]):
         for j in range(image.shape[1]):
@@ -160,7 +158,7 @@ def sp_noise(image,prob):
 def img_handle():
     for root, dirs, files in os.walk('./images'):
         for file in files:
-            img_path = root+'/'+file
+            img_path = root + '/' + file
             img = cv2.imread(img_path, 0)
             get_img(img, file)
     return data, label

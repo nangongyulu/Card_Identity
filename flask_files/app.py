@@ -1,30 +1,18 @@
 import os
 import time
-
 from flask import Flask, render_template, request
+from os import path
 from werkzeug.utils import secure_filename
+from werkzeug.datastructures import CombinedMultiDict
+from form import UploadForm
 
 # 创建项目
 app = Flask(__name__)
 app.config['DEBUG'] = True
 app.config['JSON_AS_ASCII'] = False
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
-
-
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
-# 全局变量 共享的文件夹路径 可以根据需求更改
-UPLOAD_FOLDER = 'image'
+ALLOWED_EXTENSIONS = {'png', 'jpg'}
 # 上传的文件夹路径
 UPLOAD_PATH = os.path.join(app.root_path, '../image')
-'''
-     测试过程调用
-     file_path表示用于测试的文件路径
-     若想测试其他图片，请将file_path修改成相应的路径
-     '''
-FILE_PATH = '../image/img_3.png'
 
 
 # 获取文件信息的函数
@@ -67,47 +55,45 @@ def index():
 
 @app.route("/HomePage")
 def HomePage():
+    filelist = os.listdir('../image/')
+    for f in filelist:
+        os.remove('../image/'+f)
+    # filelist = os.listdir('../result/')
+    # for f in filelist:
+    #     os.remove('../result/'+f)
     return render_template("HomePage.html")
 
 
-@app.route("/upload_file", methods=['POST'])
+@app.route("/upload_file", methods=['GET', 'POST'])
 def upload():
-    if request.method == 'POST':
-        # 获取文件 拼接存储路径并保存
-        upload_file = request.files.get("upload_file")
-        upload_file.save(os.path.join(UPLOAD_PATH, upload_file.filename))
-        #  返回上传成功的模板
-        return render_template("upload_ok.html")
-
-    return render_template("upload.html")
-
-
-# 上传的网页
-#
-# @app.route('/upload_file', methods=['POST'])
-# def upload():
-#     upload_file = request.files.get("upload_file")
-#     if upload_file and allowed_file(upload_file.filename):
-#         filename = secure_filename(upload_file.filename)
-#         # 将文件保存到 static/uploads 目录，文件名同上传时使用的文件名
-#         upload_file.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
-#         return render_template("upload_ok.html")
-#     else:
-#         return 'failed'
-
-
-def ocr_detection():
-    import Code_body.model_called
-    Code_body.model_called.application(FILE_PATH)
+    """上传文件的URL 支持GET/POST请求"""
+    if request.method == 'GET':
+        return render_template('upload.html')
+    else:
+        if not path.exists(UPLOAD_PATH):
+            os.makedirs(UPLOAD_PATH)  # 路径不存在时创建路径
+        form = UploadForm(CombinedMultiDict([request.form, request.files]))
+        if form.validate():
+            # 获取文件 拼接存储路径并保存
+            upload_file = request.files['file']
+            filename = secure_filename(upload_file.filename)
+            ext = filename.rsplit('.', 1)[1]  # 获取文件后缀
+            # 重新用于命名，不会重复
+            new_filename = 'img_' + '1' + '.' + ext
+            upload_file.save(path.join(UPLOAD_PATH, new_filename))
+            #  返回上传成功的模板
+            return render_template("upload_ok.html")
+        else:
+            return "仅支持jpg和png格式的图片!"
 
 
 @app.route('/ret_show', methods=['GET'])
 def ret_show():
-    ocr_detection()
-    f = open('../result/result_show.txt', 'r')
-    ret_list = f.readlines()
+    os.system('python ../Code_body/identity_card.py')
+    file = open('../result/result_show.txt', 'r')
+    ret_list = file.readlines()
     print(ret_list)
-    f.close()
+    file.close()
 
     return render_template('ret_show.html', result_list=ret_list)
 

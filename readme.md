@@ -3,11 +3,11 @@
 
 输入用例：待识别银行卡图片
 
-![image](test_images/img_3.png)
+![image](./Code_body/test_images/img_3.png)
 
 输出用例：识别结果
 
-![img.png](img.png)
+![img.png](./Code_body/img.png)
 
 项目结构：
 ```
@@ -23,6 +23,8 @@ model_called.py: 模型调用代码
 # Enviroment
 语言：`Python3.7`
 
+
+
 深度学习框架：`TensorFlow`
 
 图像处理：`OpenCV`
@@ -30,14 +32,14 @@ model_called.py: 模型调用代码
 ### 训练模型
 删除`model`文件夹内容
 
-进入`train.py`
+进入`identity_card.py`
 
 将布尔变量`train`的值改为`true`
 
-运行`train.py`
+运行`identity_card.py`
 ### 模型调用
-进入`train.py`
+进入`identity_card.py`
 
 修改变量`file_path`的值为想要识别的图片路径
 
-运行`train.py`
+运行`identity_card.py`

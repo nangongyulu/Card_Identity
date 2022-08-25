@@ -9,7 +9,7 @@ BATCH_SIZE = 20
 REGULARIZER = 0.001
 STEPS = 10000
 MOVING_AVERAGE_DECAY = 0.01
-MODEL_SAVE_PATH = "../Code_body/model/"
+MODEL_SAVE_PATH = "./model/"
 MODEL_NAME = "train_model"
 FILE_NAME = "Classification.xlsx"
 
