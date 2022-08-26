@@ -1,5 +1,4 @@
 import os
-import time
 from flask import Flask, render_template, request
 from os import path
 from werkzeug.utils import secure_filename
@@ -12,65 +11,37 @@ app = Flask(__name__)
 app.config['DEBUG'] = True
 app.config['JSON_AS_ASCII'] = False
 ALLOWED_EXTENSIONS = {'png', 'jpg'}
+
 # 上传的文件夹路径
 pwd = os.getcwd()
 ROOT_PATH = os.path.dirname(pwd)
 UPLOAD_PATH = ROOT_PATH + '/image/'
-DIR_PY = ROOT_PATH + '/picture_identity/' + 'identity_card'
 
 
-# 获取文件信息的函数
-def get_files_data():
-    files = []
-    for i in os.listdir(UPLOAD_PATH):
-        if len(i.split(".")) == 1:  # 判断此文件是否为一个文件夹
-            continue
-
-        # 拼接路径
-        file_path = UPLOAD_PATH + "/" + i
-        name = i
-        size = os.path.getsize(file_path)  # 获取文件大小
-        ctime = time.localtime(os.path.getctime(file_path))  # 格式化创建当时的时间戳
-
-        # 列表信息
-        files.append({
-            "name": name,
-            "size": size,
-            "ctime": "{}年{}月{}日".format(ctime.tm_year, ctime.tm_mon, ctime.tm_mday),  # 拼接年月日信息
-        })
-    return files
-
-
-@app.route("/")
+@app.route("/")  # 登录界面
 def login():
     return render_template("login.html")
 
 
-@app.route("/intro")
+@app.route("/intro")  # 介绍界面
 def intro():
     return render_template("intro.html")
 
 
-# @app.route("/index")
-# def index():
-#     """共享文件主页"""
-#     return render_template("index.html", files=get_files_data())
-
-
-@app.route("/HomePage")
+@app.route("/HomePage")  # 主界面
 def HomePage():
     return render_template("HomePage.html")
 
 
-@app.route("/upload", methods=['GET', 'POST'])
+@app.route("/upload", methods=['GET', 'POST'])  # 文件上传
 def upload():
     """上传文件的URL 支持GET/POST请求"""
     if request.method == 'GET':
-        return render_template('upload.html',files=get_files_data())
+        return render_template('upload.html')
     else:
-        filelist = os.listdir(ROOT_PATH+'/image/')
+        filelist = os.listdir(ROOT_PATH + '/image/')
         for f in filelist:
-            os.remove(ROOT_PATH+'/image/' + f)
+            os.remove(ROOT_PATH + '/image/' + f)
         if not path.exists(UPLOAD_PATH):
             os.makedirs(UPLOAD_PATH)  # 路径不存在时创建路径
         form = UploadForm(CombinedMultiDict([request.form, request.files]))
@@ -88,19 +59,19 @@ def upload():
             return "仅支持jpg和png格式的图片!"
 
 
-def de_file():
-    filelist = os.listdir(ROOT_PATH+'/result/')
+def de_file():  # 删除文件
+    filelist = os.listdir(ROOT_PATH + '/result/')
     for f in filelist:
-        os.remove(ROOT_PATH+'/result/' + f)
+        os.remove(ROOT_PATH + '/result/' + f)
 
 
-@app.route('/ret_show', methods=['GET'])
+@app.route('/ret_show', methods=['GET'])  # 结果展示
 def ret_show():
     de_file()
     identityCard()
-    file = open(ROOT_PATH+'/result/result_show.txt', 'r')
+    file = open(ROOT_PATH + '/result/result_show.txt', 'r')
     ret_list = file.readlines()
-    print('111111')
+    # print('111111')
     print(ret_list)
     file.close()
 

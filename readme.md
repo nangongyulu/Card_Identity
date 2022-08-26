@@ -1,5 +1,5 @@
 # 项目背景
-银行卡号识别系统-基于Tensorflow&openCV
+信用卡数字识别-基于Tensorflow&openCV
 
 输入用例：待识别银行卡图片
 
@@ -10,11 +10,11 @@
 ![img.png](picture_identity/img.png)
 
 # 项目结构
-## 后端核心代码 Code_body
+## 图片识别 picture_identity
 ```
-images: 训练集
+images: 训练集（分隔好的图片）
 model: 训练模型
-identity_card.py: 入口文件
+identity_card.py: 模型训练入口文件
 PreProcess.py & ImgHandle.py: 图像处理代码
 forward.py: 深度学习模型前向传播代码
 backward.py: 深度学习模型反向传播代码
@@ -24,8 +24,8 @@ model_called.py: 模型调用代码
 ```
 static:存放html页面.css样式表、页面所用图片
 template:存放.html文件
-app:Flask框架代码
-form:控制上传照片格式（jpg、png）
+app.py:主程序入口代码
+form.py:控制上传照片格式（jpg、png）
 ```
 
 ## 其他文件夹

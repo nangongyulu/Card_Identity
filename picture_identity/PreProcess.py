@@ -2,27 +2,38 @@ import cv2
 import numpy as np
 
 
+
 def image_process(file_path):
     img = cv2.imread(file_path, 0)
-    blur = cv2.GaussianBlur(img, (3, 3), 0)  # 高斯模糊
+    blur = cv2.GaussianBlur(img, (3, 3), 0)  # 高斯模糊     减少噪声及不必要的细节
     ret, binary = cv2.threshold(blur, 50, 255, cv2.THRESH_BINARY)  # 二值化
+    # ret是否读取到图像 ture/false  binary 二值化后的图像
 
     kernel = np.ones((1, 50), np.uint8)
+    # np.ones() 函数返回给定形状和数据类型的新数组，元素设为1
+    # (1,50)形状  uint8专门用于存储图像
+
+    # 定位银行卡
     erosion = cv2.erode(binary, kernel)  # 膨胀
     dilation = cv2.dilate(erosion, kernel)  # 腐蚀
 
+    # 寻找轮廓    cv2.RETR_TREE建立一个等级树结构轮廓   cv2.CHAIN_APPROX_SIMPLE只保留终点坐标
+    # 返回值：contours轮廓  hierarchy轮廓之间嵌套和临近关系
     contours, hierarchy = cv2.findContours(dilation, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     sp = dilation.shape
     x, y, w, h = 0, 0, 0, 0
     for i in range(0, len(contours)):
         x, y, w, h = cv2.boundingRect(contours[i])
+        # boundingRect寻找最小正矩形  返回值是轮廓i的左上角坐标和宽高
+        # sp[0]高 sp[1]宽   这一步用于筛选代表银行卡号的子块
         if h > sp[0] * 0.05 and w > sp[1] * 0.5 and sp[0] * 0.2 < y < sp[0] * 0.8 and w / h > 5:
+            # 卡号字符定位
             img = binary[y:y + h, x:x + w]
             break
 
     return num_split(img)
 
-
+# 字符分割
 def num_split(img):
     height, width = img.shape
     v = [0] * width

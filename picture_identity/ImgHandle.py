@@ -58,7 +58,7 @@ def get_img(img, file):
         if Position[m][3] / (Position[m][2] - Position[m][0]) > 1 and Position[m][3] / (
                 Position[m][2] - Position[m][0]) < 5:
             temp_img = img[Position[m][1]:Position[m][3], Position[m][0]:Position[m][2]]
-
+            # 用temp存放data和label
             temp_img = cv2.resize(temp_img, (16, 16))
 
             blur1 = cv2.GaussianBlur(temp_img, (1, 1), 0)  # 高斯模糊
@@ -159,6 +159,7 @@ def img_handle():
     for root, dirs, files in os.walk('./images'):
         for file in files:
             img_path = root + '/' + file
+            # 以灰度图的方式读取图片
             img = cv2.imread(img_path, 0)
             get_img(img, file)
     return data, label

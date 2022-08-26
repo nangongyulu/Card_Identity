@@ -14,11 +14,7 @@ def identityCard():
     if train:
         bw.main()
 
-    '''
-    测试过程调用
-    file_path表示用于测试的文件路径
-    若想测试其他图片，请将file_path修改成相应的路径
-    '''
+    # 获取文件路径
     pwd = os.getcwd()
     filelist = os.listdir(os.path.dirname(pwd) + '/image/')
     for f in filelist:
