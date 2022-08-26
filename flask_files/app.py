@@ -39,7 +39,7 @@ def upload():
     if request.method == 'GET':
         return render_template('upload.html')
     else:
-        filelist = os.listdir(ROOT_PATH + '/image/')
+        filelist = os.listdir(ROOT_PATH + '/image/')  # 文件路径
         for f in filelist:
             os.remove(ROOT_PATH + '/image/' + f)
         if not path.exists(UPLOAD_PATH):
