@@ -56,7 +56,7 @@ def upload():
             #  返回上传成功的模板
             return render_template("upload_ok.html")
         else:
-            return "仅支持jpg和png格式的图片!"
+            return render_template("upload_fail.html")
 
 
 def de_file():  # 删除文件
