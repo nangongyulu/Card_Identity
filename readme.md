@@ -50,17 +50,12 @@ result:识别结果输出
 
 进入`identity_card.py`
 
-将布尔变量`train`的值改为`true`
-
-运行`identity_card.py`
-### 2.模型调用
-进入`identity_card.py`
-
-修改变量`file_path`的值为想要识别的图片路径
+将布尔变量`train`的值改为 True
 
 运行`identity_card.py`
 
-### 3.正式使用
+将布尔变量`train`的值改为 False
+### 2.正式使用
 运行flask_files下app.py文件，进入前端界面
 
 ![img.png](picture_identity/login.png)
